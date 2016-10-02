@@ -1,0 +1,8 @@
+model/*.js
+model/*.js.map
+dao/*.js
+dao/*.js.map
+controller/*.js
+controller/*.js.map
+*.js
+*.js.map
