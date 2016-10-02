@@ -141,5 +141,6 @@ api.get('/dashboard', (req, res)=>{
     });
 })
 
-app.listen(process.env.PORT);
-console.log("Ouvindo em " + process.env.PORT);
+var PORT = 3001; //process.env.PORT
+app.listen(PORT);
+console.log("Ouvindo em " + PORT);
