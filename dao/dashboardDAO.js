@@ -27,7 +27,7 @@ dashboardDAO.consultar = function* consultarDAO() {
                     count["arduino"] = 0;
                     count["pacientes"] = 0;
                     count["cuidadores"] = 0;
-                    count["docs"] = 0
+                    count["docs"] = 0;
                     for(var item of resp.docs){
                         count.docs++;
                         if(item.collection == "arduino"){

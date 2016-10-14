@@ -3,6 +3,7 @@ var usuarioDAO = require("../dao/usuarioDAO.js");
 var usuarioController = {};
 
 usuarioController.inserir = function*(req, res){
+    console.log(req.body);
     return yield usuarioDAO.inserir(req.body.usuario);
 };
 

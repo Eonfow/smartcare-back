@@ -1,6 +1,7 @@
 var usuarioController =  require('./controller/usuarioController.js');
 var arduinoController =  require('./controller/arduinoController.js');
 var dashboardController =  require('./controller/dashboardController.js');
+var quedaController = require('./controller/quedaController.js');
 
 var config = require("./config.json");
 
@@ -51,6 +52,7 @@ api.post('/usuario', (req, res)=>{
     }).then((result)=>{
         res.json({success:true, result:result});
     }).catch((err)=>{
+        console.log(err);
         res.json({success:false, errBody:err});
     });
 });
@@ -139,7 +141,20 @@ api.get('/dashboard', (req, res)=>{
     }).catch((err)=>{
         res.json({success:false, errBody:err});
     });
-})
+});
+
+
+// QUEDAS
+api.post('/queda', (req, res) =>{
+    co(function*(){
+        return yield quedaController.inserir(req, res);
+    }).then((result)=>{
+        res.json({success:true, result:result});
+    }).catch((err)=>{
+        console.log(err);
+        res.json({success:false, errBody:err});
+    });
+});
 
 app.listen(process.env.PORT);
 console.log("Ouvindo em " + process.env.PORT);
