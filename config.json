@@ -1,5 +1,10 @@
 {
     "dbUrl": "767b433e-7406-433d-8249-713e1d11d402-bluemix.cloudant.com/smartcare/",
     "dbAuth": "trascessinglencessimpler:a304b58c4afe7b984d986b6d13f1a7c06263974f",
-    "salt": "#Th1s_isMy-Unbr34k4BLe...hAsH"
+    "salt": "#Th1s_isMy-Unbr34k4BLe...hAsH",
+    "apiKey": "AIzaSyCLka5GoGF1Ufx2LoAFSeu-swrns-BRF5s",
+    "authDomain": "smartcare-fd9db.firebaseapp.com",
+    "databaseURL": "https://smartcare-fd9db.firebaseio.com",
+    "storageBucket": "smartcare-fd9db.appspot.com",
+    "messagingSenderId": "79459045692"
 }

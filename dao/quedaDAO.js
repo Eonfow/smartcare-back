@@ -6,13 +6,6 @@ var firebase = require('firebase');
 var baseUrl = "https://"+config.dbAuth+"@"+config.dbUrl;
 
 //inicialize o firebase
-var config = {
-    apiKey: "AIzaSyCLka5GoGF1Ufx2LoAFSeu-swrns-BRF5s",
-    authDomain: "smartcare-fd9db.firebaseapp.com",
-    databaseURL: "https://smartcare-fd9db.firebaseio.com",
-    storageBucket: "smartcare-fd9db.appspot.com",
-    messagingSenderId: "79459045692"
-};
 firebase.initializeApp(config);
 
 var database = firebase.database();
@@ -27,7 +20,7 @@ quedaDAO.inserir = function* inserirDAO(idArduino) {
             .send({
               "selector": {
                 "collection": "usuarios",
-                "idArduino": 12
+                "idArduino": idArduino
               },
               "fields": ["_id", "_rev", "nm_usuario"]
             })
@@ -36,17 +29,20 @@ quedaDAO.inserir = function* inserirDAO(idArduino) {
                     reject(err);
                 else{
                     var resp = JSON.parse(data.text);
-                    console.log(resp);
-                    
-                    //registra a queda no firebase
-                    /*
-                    database.ref('quedas').push({
-                        timestamp: new Date().getTime(),
-                        idArduino: idArduino
-                    });
-                    */
-                    
-                    resolve(resp);
+
+                    if(resp && resp.docs.length > 0) {
+                        //registra a queda no firebase
+                        database.ref('quedas').push({
+                            timestamp: new Date().getTime(),
+                            idArduino: idArduino,
+                            nomePaciente: resp.docs[0].nm_usuario
+                        });
+
+                        resolve('Queda registrada!');                       
+                    }
+                    else {
+                        reject('Usuario nao encontrado');
+                    }
                 }
                     
             });
